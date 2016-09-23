@@ -1,16 +1,36 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './index.scss';
+import styles from './styles/index.scss';
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Nav from './components/nav';
+import {blue600} from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Posts from './components/posts';
+import ServiceWorker from './components/serviceWorker';
+
+// import ServiceWorker from './utils/serviceWorker';
+//
+// ServiceWorker.init();
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: blue600,
+  },
+});
 
 export default class App extends React.Component {
-  render() {
+  constructor (props, context) {
+    super(props, context);
+  }
+
+  render () {
     return (
-      <div>
-        <h1>It Works!</h1>
-        <p>This React project just works including <span className={styles.blueBg}>module</span> local styles.</p>
-        <p>Global bootstrap css import works too as you can see on the following button.</p>
-        <p><a className="btn btn-primary btn-lg">Enjoy!</a></p>
-      </div>
-    )
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <Nav />
+          <Posts />
+          <ServiceWorker />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 }

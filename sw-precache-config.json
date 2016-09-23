@@ -1,0 +1,13 @@
+{
+  "staticFileGlobs": [
+    "public/**/**.css",
+    "public/**/*.html",
+    "public/images/icons/**.*",
+    "public/images/**.*",
+    "public/fonts/**.*",
+    "public/**/**.js",
+    "public/manifest.json"
+  ],
+  "stripPrefix": "public",
+  "verbose": "true"
+}

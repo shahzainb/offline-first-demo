@@ -4,6 +4,7 @@ var loaders = require('./webpack.loaders');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // local css modules
 loaders.push({
@@ -47,7 +48,6 @@ module.exports = {
 			compress: {
 				warnings: false,
 				screw_ie8: true,
-				drop_console: true,
 				drop_debugger: true
 			}
 		}),
@@ -56,8 +56,20 @@ module.exports = {
 			allChunks: true
 		}),
 		new HtmlWebpackPlugin({
-			template: './src/template.html',
-			title: 'Webpack App'
-		})
+			template: './src/index.html',
+			title: 'Offline First Demo'
+		}),
+    new CopyWebpackPlugin([
+      {
+        from: './src/manifest.json',
+        to: 'manifest.json'
+      },
+      {
+        from: './src/images',
+        to: 'images'
+      }
+    ], {
+      copyUnmodified: true
+    })
 	]
 };

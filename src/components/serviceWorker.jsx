@@ -16,7 +16,7 @@ export default class ServiceWorker extends React.Component {
   }
 
   componentDidMount () {
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && this.props.isServiceWorkerEnabled) {
       navigator
         .serviceWorker
         .register('service-worker.js')
@@ -45,7 +45,7 @@ export default class ServiceWorker extends React.Component {
           }
 
           if (this.state.serviceWorker) {
-            console.log(this.state.serviceWorker.state);
+            console.log(`Service Worker is ${this.state.serviceWorker.state}`);
             this.state.serviceWorker.addEventListener('statechange', e => {
               this.setState({
                 state: e.target.state,
@@ -69,6 +69,12 @@ export default class ServiceWorker extends React.Component {
   }
 
   render () {
+
+    if (this.state.serviceWorker && !this.props.isServiceWorkerEnabled) {
+      console.log('Deleting all Cache');
+      this.state.serviceWorker.postMessage({command: 'delete_all'});
+    }
+
     return (
       <div>
         <Snackbar

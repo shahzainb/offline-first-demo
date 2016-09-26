@@ -19,29 +19,15 @@ export default class Posts extends React.Component {
 
     this.state = {
       isLoading: true,
-      isOffline: false,
       posts: []
     }
   }
 
   componentDidMount () {
     const postsRef = db.database().ref('posts');
-    window.addEventListener('online', e => {
-      console.log('online!');
-      this.setState({
-        isOffline: false
-      })
-    });
-
-    window.addEventListener('offline', e => {
-      console.log('offline!');
-      this.setState({
-        isOffline: true
-      })
-    });
 
     postsRef
-      .on('child_added', (data) => {
+      .on('child_added', data => {
         let posts = this.state.posts;
         const post = data.val();
         console.log(post);
@@ -54,7 +40,7 @@ export default class Posts extends React.Component {
       });
 
      postsRef
-      .on('child_changed', (data) => {
+      .on('child_changed', data => {
         let posts = this.state.posts;
         const post = data.val();
         console.log(post);
@@ -81,15 +67,17 @@ export default class Posts extends React.Component {
   render () {
 
     let posts = (this.state.posts.length > 0) ? this.state.posts.map(post => {
-      return (<Card key={post.uid} style={paperStyle}>
-        <CardMedia>
-          <img src={(!this.state.isOffline) ? post.imgUrl : 'images/placeholder-1080x607.png'} />
-        </CardMedia>
-        <CardTitle title={post.title} subtitle={post.summary} />
-        <CardText>
-          {post.body}
-        </CardText>
-      </Card>)
+      return (
+        <Card key={post.uid} style={paperStyle}>
+          <CardMedia>
+            <img src={(!this.props.isOffline) ? post.imgUrl : 'images/placeholder-1080x607.png'} />
+          </CardMedia>
+          <CardTitle title={post.title} subtitle={post.summary} />
+          <CardText>
+            {post.body}
+          </CardText>
+        </Card>
+      )
     }) : [];
 
     return (

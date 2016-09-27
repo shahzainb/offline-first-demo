@@ -1,10 +1,8 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {blue600} from 'material-ui/styles/colors';
 import Paper from 'material-ui/Paper';
+import Snackbar from 'material-ui/Snackbar';
 import {propEq, findIndex} from 'ramda';
 import db from './../utils/db';
 
@@ -17,9 +15,13 @@ export default class Posts extends React.Component {
   constructor (props, context) {
     super(props, context);
 
+    this.handleRequestClose = this.handleRequestClose.bind(this);
+
     this.state = {
       isLoading: true,
-      posts: []
+      posts: [],
+      open: false,
+      message: ''
     }
   }
 
@@ -35,7 +37,9 @@ export default class Posts extends React.Component {
         posts.push(post);
 
         this.setState({
-          posts
+          posts,
+          open: true,
+          message: `New Article: "${post.title}"`
         });
       });
 
@@ -47,7 +51,9 @@ export default class Posts extends React.Component {
         posts[findIndex(propEq('uid', post.uid))(posts)] = post;
 
         this.setState({
-          posts
+          posts,
+          open: true,
+          message: `Updated: "${post.title}"`
         });
       });
 
@@ -59,9 +65,17 @@ export default class Posts extends React.Component {
         posts.splice(findIndex(propEq('uid', post.uid))(posts), 1);
 
         this.setState({
-          posts
+          posts,
+          open: true,
+          message: `Article deleted: "${post.title}"`
         });
       });
+  }
+
+  handleRequestClose () {
+    this.setState({
+      open: false
+    });
   }
 
   render () {
@@ -87,6 +101,12 @@ export default class Posts extends React.Component {
           <h2>This demo is built with Firebase, React and Material-UI</h2>
         </Paper>
         {posts}
+        <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          autoHideDuration={2000}
+          onRequestClose={this.handleRequestClose}
+        />
       </div>
     );
   }

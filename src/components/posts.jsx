@@ -18,10 +18,9 @@ export default class Posts extends React.Component {
     this.handleRequestClose = this.handleRequestClose.bind(this);
 
     this.state = {
-      isLoading: true,
       posts: [],
       open: false,
-      message: ''
+      message: '',
     }
   }
 
@@ -36,10 +35,15 @@ export default class Posts extends React.Component {
 
         posts.push(post);
 
+        if (posts.length > 2) {
+          this.setState({
+            open: true,
+            message: `New Article: "${post.title}"`
+          });
+        }
+
         this.setState({
-          posts,
-          open: true,
-          message: `New Article: "${post.title}"`
+          posts
         });
       });
 

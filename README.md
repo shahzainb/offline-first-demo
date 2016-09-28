@@ -48,3 +48,25 @@ Open the web browser to `http://localhost:8888/`
 ```
 npm run build
 ```
+
+### Notes about sw-precache
+[sw-precache](https://github.com/GoogleChrome/sw-precache) is a project 
+created by some developers at Google to help adding 
+[Service Workers](https://developers.google.com/web/fundamentals/primers/service-worker/?hl=en) 
+to a web app to begin to make it a Progressive Web App.
+
+With the sw-precache config, you specify what files you want to precache
+and the generated service-worker.js file handles the whole lifecycle.
+The only extra thing you as a dev need to do, is to handle registration
+of the SW. If you have a look at service-worker.jsx in src/components,
+you can see an example of this.
+
+The generated service-worker.js file does not handle everything that a 
+Service Worker is capable of doing however. You would need to import
+your own scripts if you want to do more advanced things such as
+Push Notifications, Background Syncing, caching of AJAX files, etc.
+
+### To-do
+* Refactor service-worker.jsx to not be a stateful component
+* Add redux for state management
+* Add PouchDB and switch between firebase or PouchDB

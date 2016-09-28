@@ -1,7 +1,7 @@
 {
   "short_name": "Offline-first Demo",
   "name": "Offline First Demo",
-  "background_color": "red",
+  "background_color": "#1E88E5",
   "icons": [
     {
       "src": "/images/icons/buildit-icon-2x.png",
@@ -20,6 +20,6 @@
     }
   ],
   "start_url": "/index.html",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait"
 }

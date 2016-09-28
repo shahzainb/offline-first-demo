@@ -15,12 +15,12 @@ At the moment it uses [Firebase](https://firebase.google.com/),
 * You'll also need to create a project in Firebase and get the API
 key. [Sign up for a free account](https://www.firebase.com/login/). 
 Then go into project settings and find
-the API key and paste it into the config.json in the root of the app.
+the API key and paste it into the config.json in src/config.
 To ensure that you don't accidentally commit your config.json to Github,
 run:
 
 ```
-git update-index --assume-unchanged config.json
+git update-index --assume-unchanged src/config/config.json
 ```
 
 * Fork and clone the project:

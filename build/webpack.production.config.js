@@ -1,10 +1,10 @@
-var webpack = require('webpack');
-var path = require('path');
-var loaders = require('./webpack.loaders.js');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const loaders = require('./webpack.loaders.js');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // local css modules
 loaders.push({

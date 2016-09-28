@@ -2,6 +2,9 @@
   "name": "offline-first-demo",
   "version": "0.0.1",
   "description": "Offline First Demo",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "build": "webpack --config build/webpack.production.config.js --progress --profile --colors && npm run precache",
     "lint": "eslint --ext js --ext jsx src || exit 0",

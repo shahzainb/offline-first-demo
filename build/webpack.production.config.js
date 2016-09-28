@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var loaders = require('./webpack.loaders');
+var loaders = require('./webpack.loaders.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
@@ -28,7 +28,7 @@ module.exports = {
 		'./src/index.jsx'
 	],
 	output: {
-		path: path.join(__dirname, 'public'),
+		path: path.join(__dirname, '../public'),
 		filename: '[chunkhash].js'
 	},
 	resolve: {

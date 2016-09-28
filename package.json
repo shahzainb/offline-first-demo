@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Offline First Demo",
   "scripts": {
-    "build": "webpack --config webpack.production.config.js --progress --profile --colors && npm run precache",
+    "build": "webpack --config build/webpack.production.config.js --progress --profile --colors && npm run precache",
     "lint": "eslint --ext js --ext jsx src || exit 0",
-    "precache": "./node_modules/.bin/sw-precache --root=public --config=sw-precache-config.json",
-    "start": "webpack-dev-server --progress --profile --colors"
+    "precache": "sw-precache --root=public --config=src/sw-precache-config.json",
+    "start": "webpack-dev-server --progress --profile --colors --config build/webpack.config.js"
   },
   "author": "Shahzain Badruddin",
   "license": "MIT",

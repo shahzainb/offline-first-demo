@@ -1,7 +1,7 @@
 "use strict";
 var webpack = require('webpack');
 var path = require('path');
-var loaders = require('./webpack.loaders');
+var loaders = require('./webpack.loaders.js');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
@@ -42,7 +42,7 @@ module.exports = {
 	],
 	devtool: process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map',
 	output: {
-		path: path.join(__dirname, 'public'),
+		path: path.join(__dirname, '../public'),
 		filename: 'bundle.js'
 	},
 	resolve: {
@@ -52,7 +52,7 @@ module.exports = {
 		loaders
 	},
 	devServer: {
-		contentBase: "./public",
+		contentBase: "./../public",
 		// do not print bundle build stats
 		noInfo: true,
 		// enable HMR

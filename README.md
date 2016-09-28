@@ -16,22 +16,29 @@ At the moment it uses [Firebase](https://firebase.google.com/),
 key. [Sign up for a free account](https://www.firebase.com/login/). 
 Then go into project settings and find
 the API key and paste it into the config.json in the root of the app.
+To ensure that you don't accidentally commit your config.json to Github,
+run:
+
+```
+git update-index --assume-unchanged config.json
+```
+
 * Fork and clone the project:
 
 ```
-> $ git clone THIS_REPO_URL
+git clone THIS_REPO_URL
 ```
 
 * Then install the dependencies:
 
 ```
-> $ npm install
+npm install
 ```
 
 * Run development server:
 
 ```
-> $ npm start
+npm start
 ```
 
 Open the web browser to `http://localhost:8888/`
@@ -39,5 +46,5 @@ Open the web browser to `http://localhost:8888/`
 ### To build production package
 
 ```
-> $ npm run build
+npm run build
 ```

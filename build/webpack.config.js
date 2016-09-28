@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const loaders = require('./webpack.loaders.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || '8888';
@@ -70,5 +71,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
 		}),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, './../src/sw.js'),
+    })
 	]
 };

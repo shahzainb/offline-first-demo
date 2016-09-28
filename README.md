@@ -49,7 +49,7 @@ Open the web browser to `http://localhost:8888/`
 npm run build
 ```
 
-### Notes about sw-precache
+### Notes about sw-precache (deprecated - see below)
 [sw-precache](https://github.com/GoogleChrome/sw-precache) is a project 
 created by some developers at Google to help adding 
 [Service Workers](https://developers.google.com/web/fundamentals/primers/service-worker/?hl=en) 
@@ -65,6 +65,10 @@ The generated service-worker.js file does not handle everything that a
 Service Worker is capable of doing however. You would need to import
 your own scripts if you want to do more advanced things such as
 Push Notifications, Background Syncing, caching of AJAX files, etc.
+
+### Notes about serviceworker-webpack-plugin
+The project now uses the [serviceworker-webpack-plugin](https://github.com/oliviertassinari/serviceworker-webpack-plugin).
+You can write any service-worker functions you want into src/sw.js.
 
 ### To-do
 * Refactor service-worker.jsx to not be a stateful component

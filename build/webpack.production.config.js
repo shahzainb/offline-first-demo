@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 // local css modules
 loaders.push({
@@ -70,6 +71,9 @@ module.exports = {
       }
     ], {
       copyUnmodified: true
+    }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, './../src/sw.js'),
     })
 	]
 };

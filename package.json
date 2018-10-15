@@ -14,9 +14,11 @@
   "author": "Shahzain Badruddin",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^3.3.2",
+    "contentful": "^7.0.4",
+    "firebase": "^5.5.3",
     "material-ui": "^0.15.4",
     "node-sass": "^3.8.0",
+    "pouchdb": "^7.0.0",
     "ramda": "^0.22.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
